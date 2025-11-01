@@ -7,7 +7,7 @@
       "verified": true,
       "avatar": "https://i.pravatar.cc/150?img=1"
     },
-    "content": "Just finished building my first React Native app with Expo! 🚀\n\nThe developer experience is incredible. Hot reload, easy deployment, and native features work seamlessly.\n\nIf you're thinking about mobile development, give it a try!",
+    "content": "Just finished building my first React Native app with Expo! 🚀\n\nThe developer experience is incredible. Hot reload, easy deployment, and native features work seamlessly.\n\nCheck out the docs: https://expo.dev\n\nIf you're thinking about mobile development, give it a try!",
     "timestamp": "2h",
     "metadata": {
       "time": "1:15 PM",
@@ -73,7 +73,7 @@
       "verified": true,
       "avatar": "https://i.pravatar.cc/150?img=13"
     },
-    "content": "TypeScript tip of the day:\n\nUse `ComponentProps<typeof Component>` to extract prop types from existing components.\n\nNo more duplicating type definitions! 🎯",
+    "content": "TypeScript tip of the day:\n\nUse `ComponentProps<typeof Component>` to extract prop types from existing components.\n\nNo more duplicating type definitions! 🎯\n\nLearn more: https://www.typescriptlang.org/docs/handbook/utility-types.html",
     "timestamp": "8h",
     "metadata": {
       "time": "7:20 AM",
@@ -95,7 +95,7 @@
       "verified": false,
       "avatar": "https://i.pravatar.cc/150?img=9"
     },
-    "content": "Spent the whole day optimizing our app's performance.\n\nResult: 40% faster load times! ⚡\n\nKey wins:\n- Lazy loading images\n- Memoized components\n- Better list virtualization\n\nSmall changes, big impact.",
+    "content": "Spent the whole day optimizing our app's performance.\n\nResult: 40% faster load times! ⚡\n\nKey wins:\n- Lazy loading images\n- Memoized components\n- Better list virtualization\n\nSmall changes, big impact.\n\nCheck my portfolio: https://myportfolio.dev",
     "timestamp": "10h",
     "metadata": {
       "time": "5:30 AM",
@@ -110,4 +110,3 @@
     }
   }
 ]
-
