@@ -1,5 +1,6 @@
 import {
   Icon,
+  Label,
   NativeTabs as Tabs,
   VectorIcon,
 } from "expo-router/unstable-native-tabs";
@@ -19,6 +20,7 @@ export default function TabLayout() {
       })}
     >
       <Tabs.Trigger name="index">
+        <Label hidden />
         {Platform.select({
           ios: <Icon sf="house.fill" />,
           android: (
@@ -27,6 +29,7 @@ export default function TabLayout() {
         })}
       </Tabs.Trigger>
       <Tabs.Trigger name="search">
+        <Label hidden />
         {Platform.select({
           ios: <Icon sf="magnifyingglass" />,
           android: (
@@ -35,6 +38,7 @@ export default function TabLayout() {
         })}
       </Tabs.Trigger>
       <Tabs.Trigger name="notifications">
+        <Label hidden />
         {Platform.select({
           ios: <Icon sf="bell" />,
           android: (
@@ -45,6 +49,7 @@ export default function TabLayout() {
         })}
       </Tabs.Trigger>
       <Tabs.Trigger name="messages">
+        <Label hidden />
         {Platform.select({
           ios: <Icon sf="envelope" />,
           android: (
