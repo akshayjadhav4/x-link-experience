@@ -1,0 +1,113 @@
+[
+  {
+    "id": "1",
+    "user": {
+      "name": "Sarah Chen",
+      "username": "sarahchen",
+      "verified": true,
+      "avatar": "https://i.pravatar.cc/150?img=1"
+    },
+    "content": "Just finished building my first React Native app with Expo! 🚀\n\nThe developer experience is incredible. Hot reload, easy deployment, and native features work seamlessly.\n\nIf you're thinking about mobile development, give it a try!",
+    "timestamp": "2h",
+    "metadata": {
+      "time": "1:15 PM",
+      "date": "11/01/24",
+      "views": "12.5K"
+    },
+    "engagement": {
+      "replies": 23,
+      "retweets": 145,
+      "likes": 892,
+      "bookmarks": 67
+    }
+  },
+  {
+    "id": "2",
+    "user": {
+      "name": "Marcus Johnson",
+      "username": "marcusdev",
+      "verified": false,
+      "avatar": "https://i.pravatar.cc/150?img=12"
+    },
+    "content": "Hot take: Composition over configuration is the secret to maintainable codebases.\n\nStop adding more props to your components. Break them down into smaller, focused pieces instead. 🧩",
+    "timestamp": "4h",
+    "metadata": {
+      "time": "11:30 AM",
+      "date": "11/01/24",
+      "views": "8.2K"
+    },
+    "engagement": {
+      "replies": 45,
+      "retweets": 234,
+      "likes": 1205,
+      "bookmarks": 156
+    }
+  },
+  {
+    "id": "3",
+    "user": {
+      "name": "Emma Rodriguez",
+      "username": "emmabuilds",
+      "verified": true,
+      "avatar": "https://i.pravatar.cc/150?img=5"
+    },
+    "content": "Finally shipped dark mode support! 🌙✨\n\nUsed CSS variables with Tailwind and it was a breeze. Everything updates automatically when users toggle themes.\n\nNo more maintaining separate stylesheets!",
+    "timestamp": "6h",
+    "metadata": {
+      "time": "9:45 AM",
+      "date": "11/01/24",
+      "views": "15.8K"
+    },
+    "engagement": {
+      "replies": 67,
+      "retweets": 445,
+      "likes": 2134,
+      "bookmarks": 289
+    }
+  },
+  {
+    "id": "4",
+    "user": {
+      "name": "Alex Kumar",
+      "username": "alexkumar",
+      "verified": true,
+      "avatar": "https://i.pravatar.cc/150?img=13"
+    },
+    "content": "TypeScript tip of the day:\n\nUse `ComponentProps<typeof Component>` to extract prop types from existing components.\n\nNo more duplicating type definitions! 🎯",
+    "timestamp": "8h",
+    "metadata": {
+      "time": "7:20 AM",
+      "date": "11/01/24",
+      "views": "9.4K"
+    },
+    "engagement": {
+      "replies": 12,
+      "retweets": 89,
+      "likes": 567,
+      "bookmarks": 123
+    }
+  },
+  {
+    "id": "5",
+    "user": {
+      "name": "Olivia Martinez",
+      "username": "oliviacodes",
+      "verified": false,
+      "avatar": "https://i.pravatar.cc/150?img=9"
+    },
+    "content": "Spent the whole day optimizing our app's performance.\n\nResult: 40% faster load times! ⚡\n\nKey wins:\n- Lazy loading images\n- Memoized components\n- Better list virtualization\n\nSmall changes, big impact.",
+    "timestamp": "10h",
+    "metadata": {
+      "time": "5:30 AM",
+      "date": "11/01/24",
+      "views": "18.6K"
+    },
+    "engagement": {
+      "replies": 34,
+      "retweets": 278,
+      "likes": 1456,
+      "bookmarks": 412
+    }
+  }
+]
+
