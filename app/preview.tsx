@@ -1,11 +1,14 @@
 import { useLocalSearchParams } from "expo-router";
 import { useCallback, useMemo, useRef, useState } from "react";
-import { StyleSheet, Text, View, useWindowDimensions } from "react-native";
+import { StyleSheet, View, useWindowDimensions } from "react-native";
 
 import * as Header from "@/components/ui/header";
+import * as TweetSheet from "@/components/ui/tweet-sheet";
 import { WebViewControl } from "@/components/ui/WebViewControl";
 import { Colors } from "@/constants/theme";
+import tweetsData from "@/data/tweets.json";
 import { useColorScheme } from "@/hooks/useColorScheme";
+import type { Tweet } from "@/types/tweet";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import Animated, {
@@ -16,10 +19,11 @@ import Animated, {
 } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { WebView } from "react-native-webview";
+
 const HEADER_HEIGHT = 64.66;
 
 export default function PreviewScreen() {
-  const { url } = useLocalSearchParams();
+  const { url, id: tweetId } = useLocalSearchParams();
   const insets = useSafeAreaInsets();
   const { height: screenHeight } = useWindowDimensions();
   const colorScheme = useColorScheme();
@@ -32,12 +36,30 @@ export default function PreviewScreen() {
   const scrollYWhenSnappedToZero = useRef<number | null>(null);
   const [currentUrl, setCurrentUrl] = useState<string>(url as string);
 
+  const tweet = useMemo(
+    () => tweetsData.find((tweet) => tweet.id === tweetId) as Tweet,
+    [tweetId]
+  );
+
   const snapPoints = useMemo(() => {
     // max bottom sheet height: screen - safe area top - header
     const maxBottomSheetHeight = screenHeight - insets.top - HEADER_HEIGHT;
     const maxSnapPercentage = (maxBottomSheetHeight / screenHeight) * 100;
 
     return ["10%", "30%", `${maxSnapPercentage}%`];
+  }, [screenHeight, insets.top]);
+
+  // Calculate snap point positions in pixels for smooth animation
+  const snapPointsPixels = useMemo(() => {
+    const minimalHeight = screenHeight * 0.1;
+    const compactHeight = screenHeight * 0.3;
+    const maxBottomSheetHeight = screenHeight - insets.top - HEADER_HEIGHT;
+
+    return {
+      minimal: screenHeight - minimalHeight,
+      compact: screenHeight - compactHeight,
+      full: screenHeight - maxBottomSheetHeight,
+    };
   }, [screenHeight, insets.top]);
 
   const handleSheetChanges = useCallback((index: number) => {}, []);
@@ -108,7 +130,7 @@ export default function PreviewScreen() {
             try {
               const domain = new URL(navState.url).hostname;
               setCurrentUrl(domain);
-            } catch (error) {
+            } catch {
               // Handle invalid URL
               setCurrentUrl(navState.url);
             }
@@ -120,23 +142,23 @@ export default function PreviewScreen() {
 
             let targetIndex: number | null = null;
 
-            // If scrolling down and past threshold, snap to 1
+            // If scrolling down and past threshold, snap to 0 (minimal - 10%)
             if (isScrollingDown && scrollY >= 100) {
-              targetIndex = 1;
+              targetIndex = 0;
               scrollYWhenSnappedToZero.current = scrollY;
             }
-            // If scrolling up and scrolled up 100 pixels from when snapped to 0 then snap to 2
+            // If scrolling up and scrolled up 100 pixels from when snapped to 0 then snap to 1 (compact - 30%)
             else if (
               isScrollingUp &&
               scrollYWhenSnappedToZero.current !== null &&
               scrollY <= scrollYWhenSnappedToZero.current - 100
             ) {
-              targetIndex = 2;
+              targetIndex = 1;
               scrollYWhenSnappedToZero.current = null;
             }
-            // If already below threshold, snap to 2
+            // If already below threshold, snap to 1 (compact - 30%)
             else if (scrollY < 100) {
-              targetIndex = 2;
+              targetIndex = 1;
               scrollYWhenSnappedToZero.current = null;
             }
 
@@ -154,10 +176,12 @@ export default function PreviewScreen() {
 
         <BottomSheet
           ref={bottomSheetRef}
-          index={2}
+          index={1}
           snapPoints={snapPoints}
           onChange={handleSheetChanges}
           animatedPosition={animatedPosition}
+          enablePanDownToClose={false}
+          enableOverDrag={false}
           handleComponent={() => (
             <Animated.View
               style={[
@@ -203,12 +227,13 @@ export default function PreviewScreen() {
               },
             ]}
           >
-            <Text className="text-gray-900 dark:text-white">
-              Preview Details
-            </Text>
-            <Text className="text-gray-600 dark:text-gray-400">
-              Swipe up to see more
-            </Text>
+            <TweetSheet.Root tweet={tweet} stage="full">
+              <TweetSheet.AnimatedView
+                animatedPosition={animatedPosition}
+                snapPoints={snapPointsPixels}
+                maxContentLines={3}
+              />
+            </TweetSheet.Root>
           </BottomSheetView>
         </BottomSheet>
       </View>

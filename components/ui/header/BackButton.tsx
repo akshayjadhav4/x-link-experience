@@ -1,4 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 import { Pressable, type PressableProps, useColorScheme } from "react-native";
 
 export type HeaderBackButtonProps = PressableProps & {
@@ -14,12 +15,17 @@ export const BackButton = ({
   className,
   ...props
 }: HeaderBackButtonProps) => {
+  const router = useRouter();
   const colorScheme = useColorScheme();
   const defaultIconColor =
     iconColor || (colorScheme === "dark" ? "#ffffff" : "#000000");
 
   return (
-    <Pressable className={`p-2 ${className || ""}`} {...props}>
+    <Pressable
+      className={`p-2 ${className || ""}`}
+      onPress={() => router.back()}
+      {...props}
+    >
       <Ionicons name={iconName} size={iconSize} color={defaultIconColor} />
     </Pressable>
   );
