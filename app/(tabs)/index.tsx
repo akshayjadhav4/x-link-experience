@@ -14,7 +14,7 @@ export default function HomeScreen() {
       style={{ paddingTop: insets.top }}
     >
       {tweets.map((tweet) => (
-        <Tweet.Root key={tweet.id}>
+        <Tweet.Root key={tweet.id} tweetId={tweet.id}>
           <Tweet.Header>
             <Tweet.Avatar source={{ uri: tweet.user.avatar }} />
             <Tweet.UserInfo

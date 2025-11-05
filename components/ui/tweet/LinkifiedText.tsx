@@ -1,4 +1,6 @@
-import { Alert, Linking, Text, type TextProps } from "react-native";
+import { useRouter } from "expo-router";
+import { Text, type TextProps } from "react-native";
+import { useTweetContext } from "./context";
 
 export type LinkifiedTextProps = TextProps & {
   children: string;
@@ -13,18 +15,11 @@ export const LinkifiedText = ({
   ...props
 }: LinkifiedTextProps) => {
   const text = children || "";
+  const router = useRouter();
+  const { tweetId } = useTweetContext();
 
   const handleLinkPress = async (url: string) => {
-    try {
-      const supported = await Linking.canOpenURL(url);
-      if (supported) {
-        await Linking.openURL(url);
-      } else {
-        Alert.alert("Error", `Cannot open URL: ${url}`);
-      }
-    } catch (error) {
-      Alert.alert("Error", "Failed to open link");
-    }
+    router.push(`/preview?url=${encodeURIComponent(url)}&id=${tweetId || ""}`);
   };
 
   // Split text by URLs and create array of text and link components
