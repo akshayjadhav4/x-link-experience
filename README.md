@@ -2,6 +2,12 @@
 
 A React Native mobile app demonstrating X's (formerly Twitter) new link preview experience that allows users to engage with posts while browsing linked content.
 
+## 🎥 Demo
+
+<video src="./demo/demo.mov" width="360" height="780" controls style="max-width: 100%; height: auto;">
+  Your browser does not support the video tag. <a href="./demo/demo.mov">Download the demo video</a>.
+</video>
+
 ## 📱 About
 
 This project is inspired by X's experimental feature that addresses a common creator complaint: **posts with links tend to get lower reach because the web browser covers the post and people forget to like or reply.**
