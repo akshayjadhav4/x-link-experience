@@ -4,9 +4,8 @@ A React Native mobile app demonstrating X's (formerly Twitter) new link preview 
 
 ## 🎥 Demo
 
-<video src="./demo/demo.mov" width="360" height="780" controls style="max-width: 100%; height: auto;">
-  Your browser does not support the video tag. <a href="./demo/demo.mov">Download the demo video</a>.
-</video>
+https://github.com/user-attachments/assets/64a1043d-6d94-4bc4-be15-39b68eb4984d
+
 
 ## 📱 About
 
